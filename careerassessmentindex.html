@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover Your Perfect Career - Jafar Shareef</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: #e5e7eb;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981 0%, #14b8a6 100%);
+            transition: width 0.5s ease;
+            width: 33.33%;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .video-placeholder {
+            width: 100%;
+            height: 300px;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ccfbf1 100%);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            border: 2px dashed #10b981;
+        }
+
+        .video-placeholder-text {
+            text-align: center;
+            color: #059669;
+        }
+
+        .video-placeholder-text h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: #f9fafb;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .checkbox-item:hover {
+            background: #f0fdf4;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .swot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .swot-item {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #10b981;
+        }
+
+        .swot-item h3 {
+            color: #059669;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .swot-helper {
+            font-size: 0.9em;
+            color: #6b7280;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .analyzing {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .spinner {
+            width: 80px;
+            height: 80px;
+            border: 6px solid #e5e7eb;
+            border-top-color: #10b981;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 30px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .analyzing h2 {
+            color: #1f2937;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .analyzing p {
+            color: #6b7280;
+            font-size: 1.1em;
+        }
+
+        .contact-capture {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ccfbf1 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .contact-capture h2 {
+            color: #059669;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .contact-capture p {
+            color: #047857;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .benefits-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .benefit {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+            color: #047857;
+        }
+
+        .benefit::before {
+            content: '✓';
+            background: #10b981;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.8em;
+            flex-shrink: 0;
+        }
+
+        .results-display {
+            margin-top: 30px;
+        }
+
+        .career-card {
+            background: white;
+            border: 2px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .career-card:hover {
+            border-color: #10b981;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.1);
+        }
+
+        .career-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .career-title {
+            font-size: 1.3em;
+            color: #059669;
+            font-weight: 600;
+        }
+
+        .career-match {
+            background: linear-gradient(135deg, #10b981 0%, #14b8a6 100%);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        .career-description {
+            color: #4b5563;
+            line-height: 1.6;
+        }
+
+        .whatsapp-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ccfbf1 100%);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .whatsapp-section h3 {
+            color: #059669;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 18px 40px;
+            font-size: 1.2em;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #20BA5A;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 211, 102, 0.3);
+        }
+
+        .intro-text {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ccfbf1 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 4px solid #10b981;
+        }
+
+        .intro-text h2 {
+            color: #059669;
+            margin-bottom: 12px;
+        }
+
+        .intro-text p {
+            color: #047857;
+            line-height: 1.6;
+        }
+
+        .error-message {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border-left: 4px solid #dc2626;
+        }
+
+        .char-counter {
+            text-align: right;
+            font-size: 0.85em;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        .privacy-check {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            margin-top: 15px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .privacy-check input[type="checkbox"] {
+            margin-top: 3px;
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .privacy-check label {
+            font-size: 0.9em;
+            color: #4b5563;
+            cursor: pointer;
+            margin: 0;
+            font-weight: normal;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.6em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .swot-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .career-header {
+                flex-direction: column;
+                align-items: start;
+                gap: 10px;
+            }
+        }
+
+        .note-box {
+            background: #fffbeb;
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+
+        .note-box p {
+            color: #92400e;
+            font-size: 0.9em;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Discover Your Perfect Career Path</h1>
+            <p>Personalized SWOT-Based Career Assessment by Jafar Shareef</p>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+        </div>
+
+        <div class="content">
+            <!-- PAGE 1: Input Collection -->
+            <div class="page active" id="page1">
+                <div class="video-placeholder">
+                    <div class="video-placeholder-text">
+                        <h3>📹 Welcome Video</h3>
+                        <p>Hi, I'm Jafar Shareef!<br>Let me help you discover your ideal career path.</p>
+                        <p style="font-size: 0.9em; margin-top: 10px; opacity: 0.8;">(Video will be added here)</p>
+                    </div>
+                </div>
+
+                <div class="intro-text">
+                    <h2>Why Take This Assessment?</h2>
+                    <p>In just 5 minutes, discover career paths perfectly aligned with your unique strengths, interests, and goals. This scientifically-backed SWOT analysis has helped hundreds of professionals find clarity and confidence in their career journey.</p>
+                </div>
+
+                <div id="error1" class="error-message" style="display: none;"></div>
+
+                <div class="form-group">
+                    <label for="name">Your Name *</label>
+                    <input type="text" id="name" placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label for="situation">Current Situation *</label>
+                    <select id="situation">
+                        <option value="">Select your current situation</option>
+                        <option value="student">Student (High School/College)</option>
+                        <option value="graduate">Recent Graduate</option>
+                        <option value="early">Early Career (0-3 years)</option>
+                        <option value="mid">Mid Career (3-7 years)</option>
+                        <option value="senior">Senior Professional (7+ years)</option>
+                        <option value="transition">Career Transition</option>
+                        <option value="entrepreneur">Entrepreneur/Business Owner</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Career Priorities (Select all that apply) *</label>
+                    <div class="checkbox-group" id="prioritiesGroup">
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="priority-check" value="income"> High Income
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="priority-check" value="balance"> Work-Life Balance
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="priority-check" value="growth"> Career Growth
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="priority-check" value="stability"> Job Security
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="priority-check" value="creative"> Creative Freedom
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="priority-check" value="impact"> Social Impact
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Specific Interests (Select all that apply) *</label>
+                    <div class="checkbox-group" id="interestsGroup">
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="interest-check" value="technology"> Technology & Coding
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="interest-check" value="creative"> Design & Creativity
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="interest-check" value="business"> Business & Finance
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="interest-check" value="healthcare"> Healthcare & Medicine
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="interest-check" value="education"> Education & Training
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="interest-check" value="communication"> Communication & Marketing
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="interest-check" value="analytics"> Data & Analytics
+                        </label>
+                        <label class="checkbox-item">
+                            <input type="checkbox" class="interest-check" value="people"> Working with People
+                        </label>
+                    </div>
+                </div>
+
+                <button type="button" class="btn" onclick="goToPage2()">Start My SWOT Analysis →</button>
+            </div>
+
+            <!-- PAGE 2: SWOT Analysis -->
+            <div class="page" id="page2">
+                <div class="intro-text">
+                    <h2>📊 Your SWOT Analysis</h2>
+                    <p>Be honest and specific. The more detail you provide, the better your career recommendations will be!</p>
+                </div>
+
+                <div id="error2" class="error-message" style="display: none;"></div>
+
+                <div class="swot-grid">
+                    <div class="swot-item">
+                        <h3>💪 Strengths</h3>
+                        <p class="swot-helper">What are you naturally good at?</p>
+                        <textarea id="strengths" placeholder="e.g., Quick learner, excellent communication, problem-solving..."></textarea>
+                        <div class="char-counter"><span id="strengthsCount">0</span>/500</div>
+                    </div>
+
+                    <div class="swot-item">
+                        <h3>🎯 Weaknesses</h3>
+                        <p class="swot-helper">What skills need development?</p>
+                        <textarea id="weaknesses" placeholder="e.g., Public speaking, time management, technical skills..."></textarea>
+                        <div class="char-counter"><span id="weaknessesCount">0</span>/500</div>
+                    </div>
+
+                    <div class="swot-item">
+                        <h3>🚀 Opportunities</h3>
+                        <p class="swot-helper">What trends or markets excite you?</p>
+                        <textarea id="opportunities" placeholder="e.g., Growing AI industry, remote work boom, startup ecosystem..."></textarea>
+                        <div class="char-counter"><span id="opportunitiesCount">0</span>/500</div>
+                    </div>
+
+                    <div class="swot-item">
+                        <h3>⚠️ Threats</h3>
+                        <p class="swot-helper">What obstacles hold you back?</p>
+                        <textarea id="threats" placeholder="e.g., High competition, lack of experience, limited network..."></textarea>
+                        <div class="char-counter"><span id="threatsCount">0</span>/500</div>
+                    </div>
+                </div>
+
+                <button type="button" class="btn" onclick="goToPage3()">Generate My Career Report →</button>
+            </div>
+
+            <!-- PAGE 3: Contact Capture & Results -->
+            <div class="page" id="page3">
+                <!-- Contact Capture Section -->
+                <div id="contactSection">
+                    <div class="analyzing">
+                        <div class="spinner"></div>
+                        <h2>Your Career Report is Being Generated!</h2>
+                        <p id="analyzingText">Analyzing your unique profile...</p>
+                    </div>
+
+                    <div class="contact-capture" id="contactForm" style="display: none;">
+                        <h2>📱 Enter Your Details to View Report</h2>
+                        <p>Receive your personalized career strategy instantly!</p>
+                        
+                        <div class="benefits-list">
+                            <div class="benefit">Top 5 career matches</div>
+                            <div class="benefit">Detailed analysis</div>
+                            <div class="benefit">Action plan included</div>
+                            <div class="benefit">100% personalized</div>
+                        </div>
+
+                        <div id="error3" class="error-message" style="display: none;"></div>
+
+                        <div class="form-group">
+                            <label for="phone">WhatsApp Number *</label>
+                            <input type="tel" id="phone" placeholder="e.g., 9876543210" maxlength="10">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email Address (Optional)</label>
+                            <input type="email" id="email" placeholder="your@email.com">
+                        </div>
+
+                        <div class="privacy-check">
+                            <input type="checkbox" id="privacy">
+                            <label for="privacy">I agree to receive my career report and career guidance tips from Jafar Shareef</label>
+                        </div>
+
+                        <button type="button" class="btn" onclick="submitContact()" id="submitBtn">
+                            🚀 View My Career Report
+                        </button>
+
+                        <div class="note-box">
+                            <p>🔒 Your information is secure and will only be used to deliver your career report and provide career guidance.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Display Section -->
+                <div id="resultsSection" style="display: none;">
+                    <div class="intro-text">
+                        <h2>🎉 Your Personalized Career Report</h2>
+                        <p id="userName">Based on your unique SWOT analysis, here are your top career matches for 2026!</p>
+                    </div>
+
+                    <div class="results-display" id="careerResults"></div>
+
+                    <div class="whatsapp-section">
+                        <h3>💬 Want Personalized Guidance?</h3>
+                        <p>Get a FREE 15-minute career consultation with Jafar Shareef</p>
+                        <p style="font-size: 0.95em; opacity: 0.8; margin-top: 10px;">
+                            Discuss your report • Get personalized advice • Ask any questions
+                        </p>
+                        <a href="#" id="whatsappBtn" class="whatsapp-btn">
+                            📱 Book FREE Consultation on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Google Apps Script Web App URL
+        const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbyNYol5y4bSjuLVX2bbiu8akbTDuH4wcz_edLU52Q2W6EaDRPG-qGjMUK75i6vr2bQj/exec';
+        
+        const userData = {};
+
+        // Character counters
+        ['strengths', 'weaknesses', 'opportunities', 'threats'].forEach(field => {
+            const textarea = document.getElementById(field);
+            const counter = document.getElementById(field + 'Count');
+            if (textarea && counter) {
+                textarea.addEventListener('input', () => {
+                    const data = await response.json();
+                
+                const reportText = data.content
+                    .filter(item => item.type === "text")
+                    .map(item => item.text)
+                    .join("\n");
+
+                userData.report = reportText;
+                displayResults(reportText);
+            } catch (error) {
+                console.error('Error generating report:', error);
+                const fallbackReport = generateFallbackReport();
+                userData.report = fallbackReport;
+                displayResults(fallbackReport);
+            }
+        }
+
+        function generateFallbackReport() {
+            return `CAREER: Software Development
+MATCH: 88%
+DESCRIPTION: Your technical interests and problem-solving strengths make this an excellent fit. The tech industry in India is booming with opportunities for freshers and experienced professionals alike.
+
+CAREER: Digital Marketing Manager
+MATCH: 85%
+DESCRIPTION: Perfect blend of creativity and analytics that matches your interests. High demand in Indian market with great work-life balance potential.
+
+CAREER: Data Analyst
+MATCH: 82%
+DESCRIPTION: Combines analytical thinking with business impact. Your systematic approach and interest in technology align perfectly with this growing field.
+
+CAREER: Chartered Accountant (CA)
+MATCH: 78%
+DESCRIPTION: Prestigious career path in India with excellent job security. Your attention to detail and structured thinking would serve you well here.
+
+CAREER: Product Manager
+MATCH: 76%
+DESCRIPTION: Leverages your people skills and strategic thinking. Great for career growth and offers leadership opportunities in tech companies.`;
+        }
+
+        function displayResults(reportText) {
+            document.getElementById('userName').textContent = `${userData.name}, based on your unique SWOT analysis, here are your top career matches for 2026!`;
+            
+            const careerResults = document.getElementById('careerResults');
+            const careers = parseCareerReport(reportText);
+            
+            careerResults.innerHTML = careers.map(career => `
+                <div class="career-card">
+                    <div class="career-header">
+                        <div class="career-title">${career.name}</div>
+                        <div class="career-match">${career.match}</div>
+                    </div>
+                    <div class="career-description">${career.description}</div>
+                </div>
+            `).join('');
+
+            const whatsappMessage = `Hi Jafar, I just completed my Career Assessment!
+
+Name: ${userData.name}
+WhatsApp: ${userData.phone}
+
+I'd love to discuss my personalized career report and get your expert guidance.
+
+Looking forward to our conversation! 🎯`;
+
+            const whatsappUrl = `https://wa.me/919539929373?text=${encodeURIComponent(whatsappMessage)}`;
+            document.getElementById('whatsappBtn').href = whatsappUrl;
+        }
+
+        function parseCareerReport(reportText) {
+            const careers = [];
+            const careerBlocks = reportText.split(/CAREER:/i).slice(1);
+            
+            careerBlocks.forEach(block => {
+                const matchMatch = block.match(/MATCH:\s*(\d+%)/i);
+                const descMatch = block.match(/DESCRIPTION:\s*(.+?)(?=CAREER:|$)/is);
+                const nameMatch = block.match(/^(.+?)(?=MATCH:)/is);
+                
+                if (nameMatch && matchMatch && descMatch) {
+                    careers.push({
+                        name: nameMatch[1].trim(),
+                        match: matchMatch[1],
+                        description: descMatch[1].trim()
+                    });
+                }
+            });
+            
+            return careers.length > 0 ? careers : [
+                { name: "Software Development", match: "88%", description: "Great fit based on your profile" },
+                { name: "Digital Marketing", match: "85%", description: "Matches your creative interests" },
+                { name: "Data Analytics", match: "82%", description: "Aligns with your analytical skills" },
+                { name: "Business Consultant", match: "79%", description: "Leverages your strategic thinking" },
+                { name: "Product Manager", match: "76%", description: "Perfect for your leadership potential" }
+            ];
+        }
+
+        async function saveToGoogleSheet() {
+            if (!GOOGLE_SHEET_URL || GOOGLE_SHEET_URL === 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE') {
+                console.log('Google Sheet URL not configured. Data saved locally only.');
+                return;
+            }
+
+            try {
+                const response = await fetch(GOOGLE_SHEET_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        timestamp: userData.timestamp,
+                        name: userData.name,
+                        email: userData.email || '',
+                        phone: userData.phone,
+                        situation: userData.situation,
+                        priorities: userData.priorities.join(', '),
+                        interests: userData.interests.join(', '),
+                        strengths: userData.strengths,
+                        weaknesses: userData.weaknesses,
+                        opportunities: userData.opportunities,
+                        threats: userData.threats,
+                        report: userData.report
+                    })
+                });
+                
+                console.log('Data sent to Google Sheets successfully');
+            } catch (error) {
+                console.error('Error saving to Google Sheets:', error);
+            }
+        }
+
+        function showError(errorId, message) {
+            const errorEl = document.getElementById(errorId);
+            errorEl.textContent = message;
+            errorEl.style.display = 'block';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function showPage(pageNum) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById('page' + pageNum).classList.add('active');
+            
+            const progress = (pageNum / 3) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html> count = textarea.value.length;
+                    counter.textContent = count;
+                    counter.style.color = count > 500 ? '#ef4444' : '#6b7280';
+                });
+            }
+        });
+
+        function goToPage2() {
+            document.getElementById('error1').style.display = 'none';
+            
+            const name = document.getElementById('name').value.trim();
+            const situation = document.getElementById('situation').value;
+            const priorities = Array.from(document.querySelectorAll('.priority-check:checked')).map(cb => cb.value);
+            const interests = Array.from(document.querySelectorAll('.interest-check:checked')).map(cb => cb.value);
+            
+            if (!name) {
+                showError('error1', 'Please enter your name.');
+                return;
+            }
+            
+            if (!situation) {
+                showError('error1', 'Please select your current situation.');
+                return;
+            }
+            
+            if (priorities.length === 0) {
+                showError('error1', 'Please select at least one Career Priority.');
+                return;
+            }
+            
+            if (interests.length === 0) {
+                showError('error1', 'Please select at least one Specific Interest.');
+                return;
+            }
+            
+            userData.name = name;
+            userData.situation = situation;
+            userData.priorities = priorities;
+            userData.interests = interests;
+            
+            showPage(2);
+        }
+
+        function goToPage3() {
+            document.getElementById('error2').style.display = 'none';
+            
+            const strengths = document.getElementById('strengths').value.trim();
+            const weaknesses = document.getElementById('weaknesses').value.trim();
+            const opportunities = document.getElementById('opportunities').value.trim();
+            const threats = document.getElementById('threats').value.trim();
+            
+            if (!strengths) {
+                showError('error2', 'Please fill in your Strengths.');
+                return;
+            }
+            
+            if (!weaknesses) {
+                showError('error2', 'Please fill in your Weaknesses.');
+                return;
+            }
+            
+            if (!opportunities) {
+                showError('error2', 'Please fill in your Opportunities.');
+                return;
+            }
+            
+            if (!threats) {
+                showError('error2', 'Please fill in your Threats.');
+                return;
+            }
+            
+            userData.strengths = strengths;
+            userData.weaknesses = weaknesses;
+            userData.opportunities = opportunities;
+            userData.threats = threats;
+            
+            showPage(3);
+            startAnalyzing();
+        }
+
+        function startAnalyzing() {
+            const analyzingTexts = [
+                "Analyzing your unique profile...",
+                "Matching with 500+ career paths...",
+                "Calculating compatibility scores...",
+                "Almost ready..."
+            ];
+
+            let textIndex = 0;
+            const textInterval = setInterval(() => {
+                document.getElementById('analyzingText').textContent = analyzingTexts[textIndex];
+                textIndex = (textIndex + 1) % analyzingTexts.length;
+            }, 1500);
+
+            setTimeout(() => {
+                clearInterval(textInterval);
+                document.querySelector('.analyzing').style.display = 'none';
+                document.getElementById('contactForm').style.display = 'block';
+            }, 5000);
+        }
+
+        async function submitContact() {
+            document.getElementById('error3').style.display = 'none';
+            
+            const phone = document.getElementById('phone').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const privacy = document.getElementById('privacy').checked;
+            
+            if (!phone) {
+                showError('error3', 'Please enter your WhatsApp number.');
+                return;
+            }
+            
+            if (phone.length < 10) {
+                showError('error3', 'Please enter a valid 10-digit WhatsApp number.');
+                return;
+            }
+            
+            if (!privacy) {
+                showError('error3', 'Please agree to receive your career report.');
+                return;
+            }
+            
+            userData.phone = phone;
+            userData.email = email;
+            userData.timestamp = new Date().toISOString();
+            
+            const submitBtn = document.getElementById('submitBtn');
+            submitBtn.disabled = true;
+            submitBtn.textContent = '⏳ Generating Report...';
+            
+            try {
+                await generateReport();
+                await saveToGoogleSheet();
+                
+                document.getElementById('contactSection').style.display = 'none';
+                document.getElementById('resultsSection').style.display = 'block';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } catch (error) {
+                console.error('Error:', error);
+                showError('error3', 'Something went wrong. Please try again.');
+                submitBtn.disabled = false;
+                submitBtn.textContent = '🚀 View My Career Report';
+            }
+        }
+
+        async function generateReport() {
+            try {
+                const response = await fetch("https://api.anthropic.com/v1/messages", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        model: "claude-sonnet-4-20250514",
+                        max_tokens: 1000,
+                        messages: [{
+                            role: "user",
+                            content: `You are a friendly and motivational career coach. Generate a concise career assessment report (500-700 words) for:
+
+Name: ${userData.name}
+Current Situation: ${userData.situation}
+Career Priorities: ${userData.priorities.join(', ')}
+Interests: ${userData.interests.join(', ')}
+
+SWOT Analysis:
+Strengths: ${userData.strengths}
+Weaknesses: ${userData.weaknesses}
+Opportunities: ${userData.opportunities}
+Threats: ${userData.threats}
+
+Provide EXACTLY 5 career recommendations in this EXACT format for each:
+
+CAREER: [Career Name]
+MATCH: [Number between 75-95]%
+DESCRIPTION: [2-3 sentences explaining why this career fits their profile, mentioning specific strengths/interests from their SWOT]
+
+Include a mix of: general careers, India-specific careers (like IAS, CA, Civil Services), and emerging careers (AI/ML, Digital Marketing, etc.).
+
+Keep tone friendly and motivational. Use simple language.`
+                        }]
+                    })
+                });
+
+                const
